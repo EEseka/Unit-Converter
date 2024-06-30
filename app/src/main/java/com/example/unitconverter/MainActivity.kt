@@ -13,9 +13,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -57,25 +60,40 @@ fun UnitConverter(modifier: Modifier = Modifier) {
 
         Spacer(modifier = modifier.height(16.dp))
         Row {
-            Box {
+            Column {
+                // Using column instead of box so i can not only group but also constrain vertically
+                // This ensures the dropdown menu actually drops down
                 Button(onClick = { /*TODO*/ }) {
                     Text("Select")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Drop down")
                 }
+                DropdownMenu(expanded = false, onDismissRequest = { /*TODO*/ }) {
+                DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Millimeters") }, onClick = { /*TODO*/ })
+                }
             }
-            Box {
+            Spacer(modifier = modifier.width(16.dp))
+            Column {
+                // Using column instead of box so i can not only group but also constrain vertically
+                // This ensures the dropdown menu actually drops down
                 Button(onClick = { /*TODO*/ }) {
                     Text("Select")
                     Icon(Icons.Default.ArrowDropDown, contentDescription = "Drop down")
+                }
+                DropdownMenu(expanded = true, onDismissRequest = { /*TODO*/ }) {
+                DropdownMenuItem(text = { Text("Centimeters") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Meters") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Feet") }, onClick = { /*TODO*/ })
+                DropdownMenuItem(text = { Text("Millimeters") }, onClick = { /*TODO*/ })
                 }
             }
         }
-
         Spacer(modifier = modifier.height(16.dp))
         Text("Result:")
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
